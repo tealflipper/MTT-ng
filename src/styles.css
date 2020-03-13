@@ -1,1 +1,59 @@
 /* You can add global styles to this file, and also import other style files */
+html {
+  position: relative; 
+  min-height: 100%; 
+  margin: 0;
+}
+body{
+  background: #d0f2f783;
+  height: 100%;
+  margin: 0;
+}
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+  background: #000b0cd2;
+  margin-bottom: 0;
+  border-radius: 0;
+}
+.well{
+  background: #798ff38c;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {
+  height: 700px;
+  padding-bottom: -30px;
+}
+.push{
+  padding: 30px;
+}
+/* Set gray background color and 100% height */
+.sidenav {
+  padding-top: 20px;
+  background-color: #39d0e756;
+  height: 100%;
+}
+page-container {
+  position: relative;
+  min-height: 100vh;
+}
+/* Set black background color, white text and some padding */
+footer {
+  background-color:#000b0cd2;
+  color: white;
+  padding: 30px;       
+}
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+  .sidenav {
+    height: auto;
+    padding: 15px;
+  }
+
+  .row.content {
+    height: auto;
+  }
+
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

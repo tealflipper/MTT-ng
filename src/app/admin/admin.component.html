@@ -1,0 +1,153 @@
+<!--
+
+  
+  <div class="list-group">
+    <form action="http://localhost/api/alta.php" method="post">
+    <div class="container">
+      <h1>Insertar</h1>
+      <p>llenar formulario para insertar producto</p>
+      <hr>
+  
+      <label for="name"><b>Nombre del curso</b></label>
+      <input type="text" placeholder="Nombre del curso" name="name" required>
+      <br>
+      <label for="length"><b>Duración</b></label>
+      <input type="number" placeholder="minutos" name="length" required>
+      <br>
+      <label for="prof"><b>Profesor</b></label>
+      <input type="text" placeholder="Angel" name="prof" required>
+      <br>
+      
+      <label for="cost"><b>Costo: </b></label>
+      <input type="number" placeholder="0 si es sin costo" name="cost"  >
+      <br>
+      <label for="type">Gratis</label> 
+      <input type="radio" id="free" name="type" value="free">
+      <label for="notFree">Con costo</label>
+      <input type="radio" id="notFree" name="type" value="notFree">
+      <br>
+      <p>Tipo de músicaa:</p>
+      <input type="checkbox" id="rock" name="rock" value="rock">
+      <label for="rock"> Rock</label>
+      <input type="checkbox" id="jazz" name="jazz" value="jazz">
+      <label for="jazz"> Jazz</label>
+      <input type="checkbox" id="metal" name="metal" value="metal">
+      <label for="metal"> Metal</label>
+      <input type="checkbox" id="pop" name="pop" value="pop">
+      <label for="pop"> Pop</label>
+      <br>    
+      <button type="submit" class="registerbtn">insertar</button>
+    </div>
+  </form>
+  
+  <form action="#">
+    <div class="container">
+      <h1>Visualizar</h1> <br>
+      <select id="coursesList" name="coursesList" size="2">
+        <option value="c1">Courso 1</option>
+        <option value="c2">Courso 2</option>
+        <option value="c3">Courso 3</option>
+      </select><br>               
+      <button type="submit" class="registebtn">visualizar</button>
+    </div>
+  </form>
+  
+  <form action="#">
+    <div class="container">
+      <h1>Eliminar</h1> <br>
+      <select id="coursesList" name="coursesList" size="2">
+        <option value="c1">Courso 1</option>
+        <option value="c2">Courso 2</option>
+        <option value="c3">Courso 3</option>
+      </select><br>               
+      <button type="submit" class="registebtn">Eliminar</button>
+    </div>
+  </form>
+
+  <form action="#">
+    <div class="container">
+      <h1>Modificar</h1> <br>
+      <select id="coursesList" name="coursesList" size="2">
+        <option value="c1">Courso 1</option>
+        <option value="c2">Courso 2</option>
+        <option value="c3">Courso 3</option>
+      </select><br><br>
+      <label for="Name"><b>Nombre del curso</b></label>
+      <input type="text" placeholder="Nombre del curso" name="course" required>
+      <br>
+      <label for="Length"><b>Duración</b></label>
+      <input type="number" placeholder="minutos" name="length" required>
+      <br>
+      <label for="Prof"><b>Profesor</b></label>
+      <input type="text" placeholder="Angel" name="prof" required>
+      <br>
+      
+      <label for="cost"><b>Costo: </b></label>
+      <input type="number" placeholder="0 si es sin costo" name="cost"  >
+      <br>
+      <label for="free">Gratis</label> 
+      <input type="radio" id="free" name="fee" value="free">
+      <label for="notFree">Con costo</label>
+      <input type="radio" id="notFree" name="fee" value="notFree">
+      <br>
+      <p>Tipo de música:</p>
+      <input type="checkbox" id="rock" name="rock" value="rock">
+      <label for="rock"> Rock</label>
+      <input type="checkbox" id="jazz" name="jazz" value="jazz">
+      <label for="jazz"> Jazz</label>
+      <input type="checkbox" id="metal" name="metal" value="metal">
+      <label for="metal"> Metal</label>
+      <input type="checkbox" id="pop" name="pop" value="pop">
+      <label for="pop"> Pop</label>
+      <br>
+      <button type="submit" class="registebtn">Modificar</button>
+    </div>
+  </form>
+
+</div>
+
+-->
+
+<div class="container">
+  <h1>Administración de cursos</h1>
+    <table class="table" *ngIf="hayRegistros(); else sinarticulos">
+      <thead class="thead-dark">
+        <td>Codigo</td><td>Nombre</td><td>duración (minutos)</td><td>Profesor</td><td>costo</td><td>tipo</td><td>Borrar</td><td>Seleccionar</td>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let cour of course">
+          <td>{{cour.id}}</td>
+          <td>{{cour.name}}</td>
+          <td>{{cour.length}}</td>
+          <td>{{cour.prof}}</td>
+          <td>{{cour.cost}}</td>
+          <td>{{cour.type}}</td>
+          <td><button (click)="baja(cour.id)">Borrar?</button></td>
+          <td><button (click)="seleccionar(cour.id)">Seleccionar</button></td>        
+        </tr>
+      </tbody>
+      </table>
+
+    <ng-template #sinarticulos><p>No hay articulos.</p></ng-template>
+    <div class="container">
+      <h2>Modificar cursos</h2>
+      <p>
+        Nombre:<input type="text" [(ngModel)]="cour.name" value={{cour.name}}/>
+      </p>
+      <p>
+        Duración:<input type="number" [(ngModel)]="cour.length" value={{cour.length}}/>
+      </p>
+      <p>
+        Profesor:<input type="text" [(ngModel)]="cour.prof" value={{cour.prof}}/>
+      </p>
+      <p>
+        Costo:<input type="number" [(ngModel)]="cour.cost" value={{cour.cost}}/>
+      </p>            
+      <p>
+        Tipo:<input type="text" [(ngModel)]="cour.type" value={{cour.type}}/>
+      </p>
+      <p><button (click)="alta()">Agregar</button>
+      <button (click)="modificacion()">Modificar</button></p>
+    </div>  
+</div>
